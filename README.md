@@ -1,9 +1,5 @@
 # NovelScape
 
-> A provider-agnostic orchestration system for narrative immersive experiences — a
-> "Director's Console" that turns a chapter of prose into synchronized visuals, music,
-> and sound effects.
-
 NovelScape bridges the gap between written narrative and multimodal AI generation.
 Instead of jumping between a dozen isolated tools, an author pastes a chapter, lets a
 Large Language Model extract optimized generation prompts, triggers parallel
@@ -17,9 +13,6 @@ the API or frontend.
 
 This repository accompanies a **Bachelor of Science thesis** (University of Vienna,
 *Computer Science – Data Science*, 2026) by **Jakub Kotkowski**.
-
-> **Note on naming:** the project is **NovelScape**; this local working directory is
-> named `NovelAudio/`.
 
 ---
 
@@ -39,23 +32,21 @@ This repository accompanies a **Bachelor of Science thesis** (University of Vien
 - [Configuration reference](#configuration-reference)
 - [API reference](#api-reference)
 - [Evaluation highlights](#evaluation-highlights)
-- [Troubleshooting](#troubleshooting)
-- [Known limitations](#known-limitations)
 - [License & academic context](#license--academic-context)
 
 ---
 
 ## Screenshots
 
-**Dashboard — start a new project**
+**Dashboard**
 
 ![Creative dashboard: "What will you create today?" with a new-project card](docs/screenshots/dashboard.png)
 
-**Chapter overview — asset-status badges (IMG / SFX / MUS / MIX)**
+**Chapter overview**
 
 ![Chapter overview for "The Martian Chronicles" with per-chapter status badges](docs/screenshots/chapter-overview.png)
 
-**Editor — dual-pane layout: narrative canvas with dynamic background (left) + asset panel (right)**
+**Editor**
 
 ![Editor layout with the generated scene image behind the prose and the asset panel docked right](docs/screenshots/editor-layout.png)
 
@@ -428,38 +419,6 @@ A small blind user study (3 participants across technical backgrounds) reached a
 task-success rate with no onboarding. The main takeaway: local **image** generation is
 highly viable, while local **audio** still lags cloud APIs on latency and fidelity —
 practical validation for the provider-agnostic design.
-
----
-
-## Troubleshooting
-
-- **`ffmpeg` errors on mix/export** — install the FFmpeg binary and ensure it's on your
-  `PATH` (`ffmpeg -version`). `ffmpeg-python` is only a wrapper.
-- **Backend exits with "Configuration missing"** — the setup wizard needs an
-  interactive terminal. Run `python main.py` in a real terminal, or create
-  `config.yaml` / `.env` manually.
-- **Local model is slow / downloads on first use** — local SDXL/MusicGen/AudioGen pull
-  weights from Hugging Face on first run (and local audio can take 30–40 s per clip).
-  Use cloud providers for a faster feedback loop.
-- **Frontend can't reach the backend / CORS errors** — confirm the backend is on
-  `:8000`, that `NEXT_PUBLIC_BASE_URL` matches, and that your origin is in the
-  backend's `allow_origins` list.
-- **`ModuleNotFoundError` on startup** — make sure you installed into the active
-  virtual environment with `pip install -r requirements.txt`.
-
----
-
-## Known limitations
-
-- **Video export is not implemented in the backend.** The frontend references an
-  `/export-video` call, but no such route exists server-side; only audio mixing
-  (`/mix`) is available.
-- **Manual timeline placement** — sound effects are placed manually; automated,
-  timestamp-driven placement is listed as future work in the thesis.
-- **No server-side persistence** — projects/chapters live in browser localStorage, so
-  they're per-browser and not shared across devices.
-- **Local inference latency / hardware dependence** — local audio is slow and
-  performance varies by GPU architecture.
 
 ---
 
