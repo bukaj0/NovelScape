@@ -29,3 +29,18 @@ torchdiffeq
 loguru
 ffmpeg-python
 httpx
+
+# Web / orchestration layer
+fastapi
+uvicorn
+pydantic
+python-dotenv
+pyyaml
+scipy
+python-multipart
+requests
+
+# Generative provider SDKs / local image models
+google-genai
+elevenlabs
+diffusers

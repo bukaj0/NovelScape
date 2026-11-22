@@ -50,7 +50,7 @@ SETUP_SCHEMA = {
 
 def prompt_user():
     print("\n" + "=" * 50)
-    print("🚀 Welcome to the NovelAudio Backend Setup!")
+    print("🚀 Welcome to the NovelScape Backend Setup!")
     print("=" * 50)
 
     required_keys = set()

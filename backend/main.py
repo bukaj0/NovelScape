@@ -26,7 +26,7 @@ async def lifespan(app: FastAPI):
     app.include_router(mixer.router)
     
     yield
-app = FastAPI(title="NovelAudio API", lifespan=lifespan)
+app = FastAPI(title="NovelScape API", lifespan=lifespan)
 
 @app.middleware("http")
 async def add_process_time_header(request, call_next):
@@ -48,7 +48,7 @@ app.mount("/mixes", StaticFiles(directory=DIRS["mixes"]), name="mixes")
 
 @app.get("/")
 def health_check():
-    return {"status": "NovelAudio Backend is running"}
+    return {"status": "NovelScape Backend is running"}
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True, log_config=None)
